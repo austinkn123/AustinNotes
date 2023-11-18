@@ -1,3 +1,5 @@
+# Javascript React
+
 # Structure:
 
 index.html is the file that gets rendered on the screen which has a div id of ‘root’
@@ -86,6 +88,8 @@ functional component = newer way to make components
 
 # Hooks
 
+
+
 ## useCallback
 
 saves a function by caching it (memoizing) so the function doesn’t get recreated again every render
@@ -96,6 +100,26 @@ saves a function by caching it (memoizing) so the function doesn’t get recreat
 ## useMemo
 
 - similar to useCallback but memoizes a value
+
+## useRef
+
+- 
+
+## useState
+
+- 
+
+## useEffect
+
+- 
+
+## useContext
+
+- 
+
+## useImperativeHandle
+
+- 
 
 # Libraries:
 
