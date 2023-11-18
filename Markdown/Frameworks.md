@@ -1,1 +1,83 @@
 # Asp.net Core
+
+## Services:
+
+Dependency Injection Service Lifetimes
+
+Lifetimes (of the application):
+
+- Singleton = creates a new instance for the lifetime of the application and continues to use it
+- Transient = Create / use a new instance of object (data) for every request
+- Scoped = Depends on the http request and creates an instance of that object for that request and continues to use that request
+
+## Dependency Injection
+
+- Definition = design pattern that manages and resolve dependencies between classes and components throughout your application
+  - Dependencies can include services, repositories, data access classes, logging utilities, or any other external component or resource.
+
+dependency injection is services in [builder.services](http://builder.services) in program.cs
+
+- now you can add in constructor in controller
+
+way of composing application
+
+### benefits
+
+- saves typing
+- splits app into chunks
+
+containers have different services have different types
+
+- transicent, singleton, scoped
+
+app has a container and whenever it needs di it reaches into container and grabs it
+
+# Dependency Injection
+
+design pattern that lets you create instances of db, obj’s, etc, once and use it throughout several pages in the frontend instead of creating instances every time for every page
+
+Dependencies folder
+
+- All of the dependencies / libraries / packages needed for the application
+
+Properties folder
+
+- Has the launchSettings.json file which has the details of how the project should be started
+  - Config details such as db connections and app settings are kept in this json file
+
+Controller Folder
+
+- Has all of the controllers of how we write all of our api methods / endpoints
+
+Program.cs is the main entry point in the app
+
+Dapper = Nuget Library that is a micro orm that can be added to a .Net project for database operations
+
+- Micro ORM = object relational mapping (a way to retrieve data from queries and map those queries onto objects)
+- Easier way to work with databases instead of creating, modifying, tracking databases
+- reduces database access code
+
+Async = async operations means when methods can be executed asynchronously
+
+- allows it to perform long running or potentially blocking operations without blocking the main execution thread
+- so it can start an operation or method and return control to the main execution thread
+
+## Connection to Database using insight.database:
+
+- add the connection string to appsetting.json
+- create service configurations
+- configure dependency injection in program.cs
+  - register services to a di container, registering db connection
+- create adaptors that uses database connection
+- inject those adapters into use cases so use cases can use those adapters
+- create endpoints so they can call the use cases to execute an action
+
+bootup = setting container with services
+
+assembly = app project
+
+nested array = getting one inner array
+
+
+
+# Next.js or Svelte

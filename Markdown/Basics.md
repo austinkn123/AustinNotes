@@ -112,4 +112,33 @@ code:
 
 constraints = need both constraints and if statements
 
-microservices
+
+
+## microservices
+
+
+
+## SOLID Principles:
+
+- Single-responsibility principle
+
+   = there should never be more than one reason for a class to change.
+
+  - In other words, **a class should have only one primary responsibility**. If a class contains methods that change different models or have multiple distinct purposes, it can become harder to understand, maintain, and modify.
+
+- Open–closed principle
+
+   = software entities should be open for extension but closed for modification.
+
+  - designing software components (e.g., classes, modules, functions) in a way that allows them to be extended or enhanced to accommodate new functionality without requiring changes to their existing source code
+
+- **Liskov substitution principle** = An inherited class should not try to change the members of its parent class, or the way it behaves. The principle is being violated if one of the child class members throws an exception.
+
+- **Interface segregation principle** = when a class implements an interface where it requires all its members
+
+- Dependency inversion principle
+
+   = high-level classes should not depend on low-level classes
+
+  - High-level modules (e.g., abstractions, interfaces) should not depend on low-level modules (e.g., concrete implementations).
+  - Both high-level and low-level modules should depend on abstractions (e.g., interfaces, abstract classes).
