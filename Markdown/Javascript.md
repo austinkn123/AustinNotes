@@ -108,6 +108,89 @@ The spread operator creates shallow copies, which means that nested objects or a
 
     
 
+## This:
+
+A keyword in JavaScript that refers to the current instance of an object
+
+- the behavior of `this` depends on how a function is being called
+
+### Examples
+
+1. **Global Context:**
+
+   - In the global context (outside of any function or object), `this` refers to the global object. In a browser environment, the global object is `window`.
+
+   ```javascript
+   console.log(this); // points to the global object (e.g., window in a browser)
+   ```
+
+2. **Function Context:**
+
+   - Inside a function, the value of `this` depends on how the function is called.
+   - When a function is called as a standalone function (not as a method of an object), `this` still refers to the global object (or `undefined` in strict mode).
+
+   ```javascript
+   function myFunction() {
+     console.log(this);
+   }
+   
+   myFunction(); // points to the global object (e.g., window in a browser)
+   ```
+
+3. **Method Context:**
+
+   - When a function is a method of an object, `this` refers to the object on which the method is called.
+
+   ```javascript
+   var obj = {
+     myMethod: function() {
+       console.log(this);
+     }
+   };
+   
+   obj.myMethod(); // points to the 'obj' object
+   ```
+
+4. **Constructor Context:**
+
+   - When a function is used as a constructor with the `new` keyword, `this` refers to the newly created instance of the object.
+
+   ```javascript
+   function MyClass() {
+     console.log(this);
+   }
+   
+   var myInstance = new MyClass(); // points to the newly created instance
+   ```
+
+5. **Event Handlers:**
+
+   - In event handlers, the value of `this` depends on the context in which the handler is called. It may not always be the object that triggered the event.
+
+   ```javascript
+   var button = document.getElementById('myButton');
+   
+   button.addEventListener('click', function() {
+     console.log(this); // points to the 'button' element
+   });
+   ```
+
+6. **Arrow Functions:**
+
+   - Arrow functions do not have their own `this`. They inherit `this` from the enclosing lexical scope. This is different from regular functions that have their own `this`.
+
+   ```javascript
+   var obj = {
+     myMethod: function() {
+       setTimeout(() => {
+         console.log(this); // points to the 'obj' object
+       }, 1000);
+     }
+   };
+   
+   obj.myMethod();
+   ```
+
 
 
 ## DOM Manipulation
@@ -644,7 +727,11 @@ The **object** data type is used to store **collections** of data and more compl
 
 - Different from an array by having key-value pairs
 
-**All other** data types are called **primitive** beccause their values can contain only a **single thing** (string, number, expression, etc.)
+Nearly all objects in JavaScript are instances of `Object`; a typical object inherits properties (including methods) from Object.prototype (talked about later)
+
+
+
+**All other** data types are called **primitive** because their values can contain only a **single thing** (string, number, expression, etc.)
 
 ```javascript
 // TYPE 7 - Object 
@@ -740,6 +827,30 @@ Object.getPrototypeOf(Player.prototype) === Object.prototype; // true
 
 - This can save memory, if we define something in a centralized place it can help
 
+
+
+Some useful methods:
+
+Keys()
+
+- returns an array of a given object's own enumerable string-keyed property names.
+
+- ```javascript
+  const object1 = {
+    a: 'somestring',
+    b: 42,
+    c: false,
+  };
+  
+  console.log(Object.keys(object1));
+  // Expected output: Array ["a", "b", "c"]
+  
+  ```
+
+  
+
+
+
 ### Symbol
 
 ```javascript
@@ -761,3 +872,10 @@ typeof alert // returns function
 ```
 
 **functions** are data type **object**
+
+
+
+## Map and filter
+
+
+
