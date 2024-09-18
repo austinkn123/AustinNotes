@@ -4,8 +4,17 @@ A **proxy** acts as an intermediary between two systems—in this case, between 
 
 In your setup:
 
-- Vite serves the frontend React app, running on **port 5173**.
-- ASP.NET Core serves the backend API, running on **port 7121**.
+- **Frontend (Vite Dev Server)**:
+
+  - Runs on `localhost:5173`.
+  - Handles the development of the React app, serving static assets and enabling hot module reloading (HMR).
+  - This is **not** a full backend server; it's just for serving static frontend files during development.
+
+  **Backend (ASP.NET Core API)**:
+
+  - Runs on another port like `localhost:7121`.
+  - Handles API requests, business logic, database interaction, etc.
+  - This is your actual backend server, which processes requests and returns data (such as from `/api/users`).
 
 When your React app makes requests to `/api/*`, the Vite proxy forwards those requests to the ASP.NET Core API at `https://localhost:7121/api/*`. This is helpful for local development because you can interact with both the frontend and backend as if they were on the same server (which avoids issues like cross-origin resource sharing, or CORS).
 
