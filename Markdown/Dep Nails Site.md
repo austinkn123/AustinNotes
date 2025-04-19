@@ -48,3 +48,7 @@
 - **Postman** or **Insomnia** for API testing.
 - **Jenkins** or **GitHub Actions** for CI/CD pipelines.
 - **Fiddler** or **Charles Web Debugging Proxy** for troubleshooting HTTP requests.
+
+
+Notes:
+- Just do regular aws cognito sign in for now, in the future I'll want to use google oauth for third party sign ins
