@@ -12,6 +12,7 @@
 	- material ui - easy and intuitive way to build components without me having to build everything from scratch. Need to look into styled components to customize the components
 	- axios - one of the most popular npm to fetch data from an api
 	- react toastify - easy way to handle notifications
+	- react router dom - used to set up routing in my app
 
 #### 2. **Cross-Platform Framework**:
 
