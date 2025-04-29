@@ -7,6 +7,11 @@
 - **React Native** (if you want a cross-platform mobile app that shares the same codebase with your web app).
     - React Native allows you to build native iOS and Android apps using JavaScript.
     - Use `useState`, `useEffect`, and `useCallback` for managing state and optimizing performance.
+- NPM
+	- redux - figured it would be good for a small scale project like this. Easier to manage the state and keep everything centralized. Might need to look into redux toolkit in the future if I wanted to scale up this project to help manage state in smaller units
+	- material ui - easy and intuitive way to build components without me having to build everything from scratch. Need to look into styled components to customize the components
+	- axios - one of the most popular npm to fetch data from an api
+	- react toastify - easy way to handle notifications
 
 #### 2. **Cross-Platform Framework**:
 
