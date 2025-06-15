@@ -22,15 +22,50 @@
 
 #### 3. **Backend**:
 
-- **C#** (as requested).
+- **C#**
 - Use **.NET Core** (formerly ASP.NET Core) for building RESTful APIs.
 - Example: Create a backend API using ASP.NET Core to handle appointment booking, user authentication, and data storage.
 
 #### 4. **Database**:
 
-- **SQL Server** or **Azure SQL Database** (for storing appointments, client information, and business hours).
-- For the mobile app, you can use **SQLite** or **Realm** for local storage, but ensure synchronization with the backend database.
-- Use **Dapper** in .NET Core to work with PosgreSQL
+- **Postgres**  (for storing appointments, client information, and business hours).
+- Use **Dapper** in .NET Core to work with PostgreSQL
+- This database is designed to manage appointments for a nail technician business. Here's a breakdown of your tables and how they interact:
+1. **`clients` Table:**
+    - **Purpose:** Stores information about your customers.
+    - **Key Columns:** `id` (unique identifier for each client), `first_name`, `last_name`, `email`, `phone`, `date_of_birth`.
+    - **Relationships:** This table is referenced by the `appointments` table to link an appointment to a specific client.
+2. **`technicians` Table:**
+    - **Purpose:** Stores information about the nail technicians who provide services.
+    - **Key Columns:** `id` (unique identifier for each technician), `first_name`, `last_name`, `email`, `phone`.
+    - **Relationships:** This table is referenced by the `appointments` table to assign a technician to an appointment.
+3. **`services` Table:**
+    - **Purpose:** This table acts as a catalog of all the different services your business offers.
+    - **Key Columns:** `id` (unique identifier for each service type), `service_name`, `description`, `duration` (standard time it takes), `price`.
+    - **Note on `appointment_id`:** Your current `services` table has an `appointment_id` column. If you are using the `appointment_services` junction table (described below) to link services to appointments (which is generally recommended for flexibility, allowing multiple services per appointment), then the `appointment_id` column in this `services` table becomes redundant and should ideally be removed. The `services` table would then purely define _what_ services are available, not _which specific appointment_ a service instance belongs to.
+    - **Relationships:** This table is referenced by the `appointment_services` table.
+4. **`appointments` Table:**
+    - **Purpose:** This is a central table that records scheduled appointments.
+    - **Key Columns:** `id` (unique identifier for each appointment), `client_id` (links to a client), `technician_id` (links to a technician), `appointment_date`, `appointment_time`, `duration` (overall appointment duration, if different from sum of services), `status` (e.g., 'Scheduled', 'Completed'), `notes`.
+    - **Relationships:**
+        - Links to `clients` via `client_id`.
+        - Links to `technicians` via `technician_id`. is missing the `FOREIGN KEY` constraint for `technician_id` referencing `technicians(id)`. You should add this for data integrity: `CONSTRAINT appointments_technician_id_fkey FOREIGN KEY (technician_id) REFERENCES technicians(id)`).
+        - Is referenced by the `appointment_services` table.
+5. **`appointment_services` Table (Junction Table):**
+    - **Purpose:** This table creates a many-to-many relationship between `appointments` and `services`. This means a single appointment can include multiple services, and a single type of service can be part of many different appointments.
+    - **Key Columns:** `appointment_id` (links to an appointment), `service_id` (links to a service). The combination of these two forms the primary key, ensuring a service is not listed twice for the same appointment.
+    - **Relationships:**
+        - Links to `appointments` via `appointment_id`.
+        - Links to `services` via `service_id`.
+**How they work together:**
+6. A **Client** (from `clients`) books an **Appointment** (recorded in `appointments`).
+7. The **Appointment** is assigned to a **Technician** (from `technicians`).
+8. The **Appointment** will consist of one or more **Services** (defined in the `services` table as a catalog).
+9. The `appointment_services` table links the specific **Appointment** to the specific **Services** chosen for that appointment. For example, if appointment `A1` includes services `S1` (Manicure) and `S2` (Pedicure), the `appointment_services` table would have two entries: (`A1`, `S1`) and (`A1`, `S2`). This is to reduce redundancy and load on services table
+
+This structure allows you to manage clients, technicians, the services you offer, and the appointments that bring them all together, including which specific services are performed during each appointment.
+
+
 
 #### 5. **Authentication**:
 
