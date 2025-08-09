@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"a2a604ca60b76651","x":-720,"y":195,"width":397,"height":302,"type":"text","text":"- **appointments**\n    - id (PK)\n    - client_id (FK → clients.id)\n    - technician_id (FK → technicians.id)\n    - appointment_date\n    - appointment_time\n    - duration\n    - status\n    - notes"},
+		{"id":"c850f5e6d837d491","x":-698,"y":-280,"width":354,"height":319,"type":"text","text":"- **clients**\n    - id (PK)\n    - first_name\n    - last_name\n    - email (Unique)\n    - phone\n    - date_of_birth\n    - created_at\n    - cognito_sub"},
+		{"id":"4fbe4f8e50214112","x":-635,"y":600,"width":227,"height":258,"type":"text","text":"- **technicians**\n    - id (PK)\n    - first_name\n    - last_name\n    - email (Unique)\n    - phone\n    - created_at"},
+		{"id":"00088e66b05f3305","x":-240,"y":283,"width":487,"height":126,"type":"text","text":"- **appointment_services** (junction table)\n    - appointment_id (PK, FK → appointments.id)\n    - service_id (PK, FK → services.id)"},
+		{"id":"afa038bfc119da5d","x":320,"y":192,"width":450,"height":308,"type":"text","text":"- **services**\n    - id (PK)\n    - service_name\n    - description\n    - duration\n    - price\n    - appointment_id (not referenced as FK, but likely intended to link to appointments)"},
+		{"id":"2afe8de2f32f3820","x":-134,"y":233,"width":276,"height":50,"color":"3","type":"text","text":"Many appt to many services"}
+	],
+	"edges":[
+		{"id":"a9d7338add003f6d","fromNode":"c850f5e6d837d491","fromSide":"bottom","toNode":"a2a604ca60b76651","toSide":"top","label":"one client to many appointments"},
+		{"id":"d168eb8ed710382b","fromNode":"a2a604ca60b76651","fromSide":"right","toNode":"00088e66b05f3305","toSide":"left","fromEnd":"arrow"},
+		{"id":"019e5e8cd9b9a77f","fromNode":"afa038bfc119da5d","fromSide":"left","toNode":"00088e66b05f3305","toSide":"right","fromEnd":"arrow"},
+		{"id":"a31e725ed2d8e553","fromNode":"4fbe4f8e50214112","fromSide":"top","toNode":"a2a604ca60b76651","toSide":"bottom","label":"one tech to many appt"}
+	]
+}
