@@ -81,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "097e6bf3d2863000",
@@ -174,9 +173,9 @@
   },
   "active": "2a6efe20fcf6f024",
   "lastOpenFiles": [
-    "Dep Nails/Dep Nails Site.md",
-    "Dep Nails/Entity-Relationship Diagram.canvas",
     "Untitled.md",
+    "Dep Nails/Entity-Relationship Diagram.canvas",
+    "Dep Nails/Dep Nails Site.md",
     "Dep Nails",
     "README.md",
     "Untitled.canvas",
