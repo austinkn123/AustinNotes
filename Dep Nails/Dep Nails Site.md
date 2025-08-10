@@ -11,8 +11,10 @@
 	- redux - figured it would be good for a small scale project like this. Easier to manage the state and keep everything centralized. Might need to look into redux toolkit in the future if I wanted to scale up this project to help manage state in smaller units
 	- material ui - easy and intuitive way to build components without me having to build everything from scratch. Need to look into styled components to customize the components
 	- axios - one of the most popular npm to fetch data from an api
+		- implemented with swr
 	- react toastify - easy way to handle notifications
 	- react router dom - used to set up routing in my app
+	- 
 
 #### 2. **Cross-Platform Framework**:
 

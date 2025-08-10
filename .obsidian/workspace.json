@@ -11,17 +11,14 @@
             "id": "2a6efe20fcf6f024",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Dep Nails/Entity-Relationship Diagram.canvas",
-                "viewState": {
-                  "x": 59.62778536944387,
-                  "y": 343.56848989552213,
-                  "zoom": -1
-                }
+                "file": "Dep Nails/Dep Nails Site.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Entity-Relationship Diagram"
+              "icon": "lucide-file",
+              "title": "Dep Nails Site"
             }
           }
         ]
@@ -173,8 +170,8 @@
   },
   "active": "2a6efe20fcf6f024",
   "lastOpenFiles": [
-    "Untitled.md",
     "Dep Nails/Entity-Relationship Diagram.canvas",
+    "Untitled.md",
     "Dep Nails/Dep Nails Site.md",
     "Dep Nails",
     "README.md",
