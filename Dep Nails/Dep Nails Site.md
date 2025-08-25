@@ -71,8 +71,22 @@ This structure allows you to manage clients, technicians, the services you offer
 
 #### 5. **Authentication**:
 
-- Integrate **Auth0** or **Azure Active Directory (AAD)** for user authentication.
+- Integrate aws cognito for user authentication.
 - Auth0 allows easy implementation of email/password, Google Sign-In, Facebook Sign-In, etc., across both web and mobile apps.
+- User Flow should be:
+	- Sign up:
+		- add info
+		- send to backend and get the cognito sub user id
+		- add record to the clients table
+		- confirm account with code by sending back the email only (no password)
+		- user is directed to the login page to log in
+		- notes
+			- not the best for ux but it is more secure
+	- login
+		- login using email or password
+		- make a call to the backend to get user profile as well to add to the context
+	- sign out
+		- clear tokens and clear user profile
 
 #### 6. **Push Notifications**:
 
