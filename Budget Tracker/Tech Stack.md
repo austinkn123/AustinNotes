@@ -1,5 +1,4 @@
 
-# Tech Stack
 ### Backend Stack
 
 #### Core Framework
@@ -158,5 +157,5 @@ if (builder.Configuration.GetValue<bool>("Features:EnableCaching")) {
 builder.Services.Decorate(typeof(IRepository<>), typeof(LoggingRepository<>));
 ```
 
-	-rfdrgd
-	- ygj
+- **Site (Frontend):**
+	- 
