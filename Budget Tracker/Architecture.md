@@ -21,7 +21,6 @@
 - Purposes:
 	- Request/response logging (HTTP level)
 	- Authentication, CORS, compression
-	- Global error handling
 	- Rate limiting??
 	- Middleware execution order is critical - they must be placed strategically with exception handling first, authentication before authorization, and static files before dynamic processing
 	- Middleware should focus on a single responsibility and avoid heavy computations or long-running tasks
@@ -29,10 +28,32 @@
 	- Keep middleware stack lean - each component has a performance cost, so avoid unnecessary components
 	- Global exception handling middleware should catch unhandled exceptions and return standardized error responses. ASP.NET Core has built-in UseExceptionHandler middleware
 #### Dependency Injection:
-- - **Scrutor Decorators for:**
+- **Scrutor** is a library for assembly scanning and decoration in Microsoft.Extensions.DependencyInjection.
+- **What it does:**
+	- Auto-registers services by convention (scanning assemblies)
+	- Adds decorator pattern support
+	- Reduces boilerplate DI registration code
+- **Scrutor Decorators for:**
 	- Validation, caching, transaction management per handler
 	- Business operation logging (what command/query ran)
 	- Authorization checks on specific operations
+Instead of manually registering each repository:
+
+```csharp
+builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+// etc...
+```
+
+```csharp
+builder.Services.Scan(scan => scan
+    .FromAssemblyOf<ExpenseRepository>()
+    .AddClasses(classes => classes.AssignableTo(typeof(IRepository<>)))
+    .AsImplementedInterfaces()
+    .WithScopedLifetime());
+```
+
 - Extension methods
 - Scrutor
 - Apply Decorators
