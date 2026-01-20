@@ -83,4 +83,5 @@ builder.Services.Decorate(typeof(IRepository<>), typeof(LoggingRepository<>));
 ```
 
 - **Site (Frontend):**
-	- 
+	- axios
+	- material ui

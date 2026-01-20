@@ -60,7 +60,7 @@
     - `react-router-dom`
     - Why: Standard routing solution, v6 is clean API
 
-### State Management (still deciding)
+### State Management 
 
 - **React Query (TanStack Query v5)**
     - `@tanstack/react-query`
